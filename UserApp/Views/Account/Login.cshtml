@@ -1,0 +1,45 @@
+﻿@using UserApp.ViewModels;
+@model LoginViewModel;
+@{
+	ViewData["Title"] = "Login";
+	Layout = "~/Views/Shared/_AccountLayout.cshtml"; 
+}
+
+<form asp-controller="Account" asp-action="Login" method="post">
+
+    <div class="container text-danger" asp-validation-summary="ModelOnly"></div>
+    <h1>LOGIN</h1>
+    <hr>
+        <div>
+            <label ><b>Email</b></label>
+            <input asp-for="Email" type="text" placeholder="Enter Email" name="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+       
+        <div>
+            <label ><b>Password</b></label>
+            <input asp-for="Password" type="password" placeholder="Enter Password" name="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <button type="submit">Login</button>
+
+    <div>
+        <a asp-controller="Account" asp-action="VerifyEmail">Forgot password?</a>
+    </div>
+        <div class="container" style="background-color:#f1f1f1">
+            @* <button type="button" class="cancelbtn">Cancel</button> *@
+            <span class="psw">Don't have an account? <a asp-controller="Account" asp-action="Register">Register</a></span>
+        </div>
+        <div>
+            <a asp-controller="Home" asp-action="Index">Back</a>
+        </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

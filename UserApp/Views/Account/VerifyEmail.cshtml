@@ -1,0 +1,23 @@
+﻿@using UserApp.ViewModels;
+@model VerifyEmailViewModel;
+@{
+    // ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<form asp-controller="Account" asp-action="VerifyEmail" method="post">
+
+    <div class="container text-danger" asp-validation-summary="ModelOnly"></div>
+    <h1>VERIFY YOUR EMAIL ADDRESS</h1>
+    <hr>
+    <div>
+        <label><b>Email</b></label>
+        <input asp-for="Email" type="text" placeholder="Enter Email" name="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Verify</button>
+    <div>
+        <a asp-controller="Home" asp-action="Index">Back</a>
+    </div>
+</form>

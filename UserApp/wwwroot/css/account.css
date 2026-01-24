@@ -1,0 +1,126 @@
+﻿/* Reset */
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+body {
+    background-color: #f2f2f2;
+    background-image: url('/Images/img (122).jpg');
+    background-size: cover;
+    background-position: center;
+
+}
+
+/* Form container */
+form {
+    background-color: #ffffff;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+    /* Headings */
+    form h1 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    form p {
+        text-align: center;
+        color: #555;
+    }
+
+    /* Input group spacing */
+    form div {
+        margin-bottom: 15px;
+    }
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Input focus */
+input:focus {
+    border-color: #04AA6D;
+    outline: none;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #03995f;
+    }
+
+/* Cancel button */
+.cancelbtn {
+    background-color: #f44336;
+}
+
+    .cancelbtn:hover {
+        background-color: #d32f2f;
+    }
+
+/* Validation text */
+.text-danger {
+    color: red;
+    font-size: 14px;
+}
+
+/* Footer containers */
+.container {
+    padding: 10px;
+}
+
+/* Bottom sections */
+.psw,
+.signin {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Links */
+a {
+    color: #04AA6D;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Divider */
+hr {
+    margin: 20px 0;
+    border: 0.5px solid #ddd;
+}
