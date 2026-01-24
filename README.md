@@ -1,5 +1,4 @@
 # ASP.NET Core Identity Authentication
-
 A custom user authentication system built with ASP.NET Core MVC using Identity Framework.
 
 ## Features
