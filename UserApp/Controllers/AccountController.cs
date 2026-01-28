@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UserApp.Models;
 using UserApp.ViewModels;
@@ -9,10 +10,12 @@ namespace UserApp.Controllers
     {
         private readonly SignInManager<Users> signInManager;
         private readonly UserManager<Users> userManager;
-        public AccountController(SignInManager<Users> signInManager, UserManager<Users> userManager)
+        private readonly RoleManager<IdentityRole> RoleManager;
+        public AccountController(SignInManager<Users> signInManager, UserManager<Users> userManager, RoleManager<IdentityRole> RoleManager)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.RoleManager = RoleManager;
         }
         public IActionResult Login()
         {
@@ -49,23 +52,33 @@ namespace UserApp.Controllers
             {
                 Users user = new Users
                 {
+                   
                     UserName = model.Email,
                     Email = model.Email,
-                    FullName = model.Name
+                    FullName = model.Name,
+                    NormalizedUserName = model.Email.ToUpper(),
+                    NormalizedEmail = model.Email.ToUpper() 
+
                 };
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var roleExist= await RoleManager.RoleExistsAsync("User");
+                    if (!roleExist)
+                    {
+                        var role= new IdentityRole("User");
+                        await RoleManager.CreateAsync(role);
+                    }
+                    await userManager.AddToRoleAsync(user, "User");
+                    await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Login", "Account");
                 }
-                else
-                {
+               
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
                     return View(model);
-                }
                
             }
 
